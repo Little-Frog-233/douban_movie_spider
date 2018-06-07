@@ -11,8 +11,8 @@ import json
 
 base_url = 'https://movie.douban.com/subject/24773958/comments?start=%d&limit=20&sort=new_score&status=P'###用来爬取的转移页面
 url = 'https://movie.douban.com/subject/24773958/comments?start=0&limit=20&sort=new_score&status=P'###用来登陆的页面
-sav_path = '/Users/ruicheng/Documents/上海师范研究生/python相关/爬虫/豆瓣短评爬取/result.txt'
-path = '/Users/ruicheng/chromedriver01/chromedriver'
+sav_path = 'result.txt'
+path = 'chromedriver'###chromedriver的位置
 browser = webdriver.Chrome(path)
 
 def find_cookie(name):
@@ -26,7 +26,7 @@ def find_cookie(name):
         browser.add_cookie(cookie)
         browser.get(url)
         html = browser.page_source
-        if html.find(name)!=-1:
+        if html.find(name)!=-1:###说明登陆成功
             return cookie
         
 cookie = find_cookie(name)
@@ -55,3 +55,4 @@ for i in range(0,6):
     time.sleep(2)
 
 browser.close()###最后的结尾，别忘了把浏览器驱动给关了
+###enjoy
